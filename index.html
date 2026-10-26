@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>CoBuild - High-Trust Global Startup Collaboration Marketplace</title>
+  <meta name="description" content="CoBuild is a connection platform for founders and skilled builders to discover requirements, negotiate privately, and run tracked collaborations."/>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#1a146b",
+            "primary-container": "#312e81",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#9c9af4",
+            "primary-fixed": "#e2dfff",
+            "primary-fixed-dim": "#c3c0ff",
+            
+            secondary: "#006a61",
+            "secondary-container": "#86f2e4",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#006f66",
+            "secondary-fixed": "#89f5e7",
+            "secondary-fixed-dim": "#6bd8cb",
+            
+            tertiary: "#3b1c00",
+            "tertiary-container": "#5b2e00",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-container": "#f18a21",
+            "tertiary-fixed": "#ffdcc3",
+            "tertiary-fixed-dim": "#ffb77d",
+            
+            surface: "#faf8ff",
+            "surface-dim": "#d2d9f4",
+            "surface-bright": "#faf8ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container-highest": "#dae2fd",
+            
+            "on-surface": "#131b2e",
+            "on-surface-variant": "#474651",
+            outline: "#777682",
+            "outline-variant": "#c8c5d3",
+            
+            error: "#ba1a1a",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "on-error-container": "#93000a"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            heading: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="app.css"/>
+</head>
+<body class="bg-surface font-sans text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-fixed selection:text-primary">
+
+  <!-- TOP STATUTORY LEGAL GUARDRAIL STRIP -->
+  <aside class="bg-surface-container-high px-4 lg:px-8 py-1.5 border-b border-surface-container-highest text-xs text-on-surface-variant z-50">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-1">
+      <div class="flex items-center gap-1.5 text-center sm:text-left">
+        <span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+        <span><strong>CoBuild is a connection service only.</strong> Contracts, escrow & payments are agreed directly between parties. CoBuild never brokers securities or issues guarantees.</span>
+      </div>
+      <div class="hidden md:flex items-center gap-4 shrink-0 font-medium">
+        <span class="text-secondary flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Dual-Verified Network
+        </span>
+        <span class="h-3 w-px bg-outline-variant"></span>
+        <a href="#trust" class="nav-trigger hover:text-primary transition-colors flex items-center gap-0.5" data-view="trust">
+          <span>Platform Guarantees & Safety</span>
+          <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN NAVIGATION HEADER -->
+  <header class="sticky top-0 w-full z-40 glass-header border-b border-surface-container-highest/60 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 h-18 flex items-center justify-between gap-4 py-2">
+      
+      <!-- Brand & Tagline -->
+      <div class="flex items-center gap-8">
+        <a href="#feed" class="nav-trigger flex items-center gap-2.5 group" data-view="feed">
+          <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm group-hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-[24px]">hub</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-heading font-extrabold text-xl tracking-tight text-primary leading-none">CoBuild</span>
+            <span class="text-[10px] font-semibold tracking-wider uppercase text-on-surface-variant mt-0.5">Tracked Collaborations</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden xl:flex items-center gap-1 p-1 bg-surface-container-low rounded-xl border border-surface-container-highest/40" id="desktop-nav">
+          <button class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all active" data-view="feed">
+            Feed & Discover
+          </button>
+          <button class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-view="my-posts">
+            My Posts & Apps
+          </button>
+          <button class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all flex items-center gap-1.5" data-view="workspace">
+            <span>Workspace</span>
+            <span class="w-2 h-2 rounded-full bg-secondary"></span>
+          </button>
+          <button class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all flex items-center gap-1" data-view="messages">
+            <span>Messages</span>
+            <span class="bg-primary text-on-primary text-[10px] px-1.5 py-0.2 rounded-full font-bold unread-badge">1</span>
+          </button>
+          <button class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-view="trust">
+            Trust & Safety
+          </button>
+          <button class="nav-link px-3.5 py-1.5 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-view="admin">
+            Admin Console
+          </button>
+        </nav>
+      </div>
+
+      <!-- Right Header Controls -->
+      <div class="flex items-center gap-3">
+        <!-- Mode Switcher Pill -->
+        <div class="flex items-center p-0.5 bg-surface-container-low rounded-full border border-surface-container-highest/60">
+          <button id="mode-founder" class="mode-btn px-3 py-1 rounded-full text-xs font-semibold text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1" title="Switch to Founder View">
+            <span class="w-1.5 h-1.5 rounded-full bg-secondary opacity-0 mode-indicator"></span>
+            <span>Founder</span>
+          </button>
+          <button id="mode-builder" class="mode-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface-container-lowest text-primary shadow-xs transition-all flex items-center gap-1" title="Switch to Builder View">
+            <span class="w-1.5 h-1.5 rounded-full bg-secondary mode-indicator"></span>
+            <span>Builder</span>
+          </button>
+        </div>
+
+        <!-- Create Requirement CTA -->
+        <button id="header-create-btn" class="nav-trigger hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary text-on-primary hover:bg-primary-container text-xs font-semibold transition-all shadow-sm active:scale-95" data-view="create">
+          <span class="material-symbols-outlined text-[18px]">add</span>
+          <span>Post Requirement</span>
+        </button>
+
+        <!-- Notification Trigger -->
+        <button id="notif-btn" class="relative p-2 rounded-full text-on-surface-variant hover:bg-surface-container-low transition-colors" title="Notifications">
+          <span class="material-symbols-outlined text-[22px]">notifications</span>
+          <span class="absolute top-1 right-1 w-4 h-4 bg-tertiary text-on-tertiary rounded-full text-[10px] font-bold flex items-center justify-center ring-2 ring-surface">2</span>
+        </button>
+
+        <!-- User Profile Dropdown -->
+        <div class="relative" id="user-menu-container">
+          <button id="user-menu-btn" class="flex items-center gap-1.5 p-1 rounded-full hover:ring-2 hover:ring-outline-variant transition-all">
+            <img id="current-user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" alt="Alex Rivera" class="w-8 h-8 rounded-full object-cover ring-1 ring-surface-container-highest"/>
+            <span class="material-symbols-outlined text-[18px] text-on-surface-variant">expand_more</span>
+          </button>
+
+          <!-- Dropdown Card -->
+          <div id="user-menu-dropdown" class="hidden absolute right-0 top-full mt-2 w-64 bg-surface-container-lowest rounded-2xl shadow-popover py-2 border border-surface-container-high z-50 animate-slide-down">
+            <div class="px-4 py-2.5 border-b border-surface-container-high">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold text-sm text-on-surface" id="menu-user-name">Alex Rivera</span>
+                <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-secondary-fixed text-on-secondary-fixed uppercase" id="menu-user-role">Builder</span>
+              </div>
+              <p class="text-xs text-on-surface-variant truncate" id="menu-user-email">alex.rivera@cobuild.network</p>
+            </div>
+            
+            <div class="py-1">
+              <button class="nav-trigger w-full text-left flex items-center gap-2.5 px-4 py-2 text-xs text-on-surface hover:bg-surface-container-low transition-colors" data-view="trust">
+                <span class="material-symbols-outlined text-[18px] text-secondary">verified_user</span>
+                <span>Trust Dossier & Identity</span>
+              </button>
+              <button class="nav-trigger w-full text-left flex items-center gap-2.5 px-4 py-2 text-xs text-on-surface hover:bg-surface-container-low transition-colors" data-view="my-posts">
+                <span class="material-symbols-outlined text-[18px] text-primary">folder_open</span>
+                <span>My Collaborations</span>
+              </button>
+              <button id="toggle-user-identity" class="w-full text-left flex items-center gap-2.5 px-4 py-2 text-xs text-on-surface hover:bg-surface-container-low transition-colors">
+                <span class="material-symbols-outlined text-[18px] text-outline">swap_horiz</span>
+                <span>Switch Profile (Alex &harr; Elena)</span>
+              </button>
+              <button class="nav-trigger w-full text-left flex items-center gap-2.5 px-4 py-2 text-xs text-on-surface hover:bg-surface-container-low transition-colors" data-view="admin">
+                <span class="material-symbols-outlined text-[18px] text-outline">admin_panel_settings</span>
+                <span>Operations Admin Console</span>
+              </button>
+            </div>
+
+            <div class="border-t border-surface-container-high my-1"></div>
+            <button id="reset-data-btn" class="w-full text-left flex items-center gap-2.5 px-4 py-2 text-xs text-outline hover:text-error hover:bg-error-container/20 transition-colors">
+              <span class="material-symbols-outlined text-[18px]">restart_alt</span>
+              <span>Reset Demo Seed Data</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Hamburger -->
+        <button id="mobile-menu-btn" class="xl:hidden p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low">
+          <span class="material-symbols-outlined text-[24px]">menu</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-nav" class="hidden xl:hidden bg-surface-container-lowest border-b border-surface-container-high px-4 py-3 space-y-1">
+      <button class="nav-link w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-on-surface" data-view="feed">Feed & Discover</button>
+      <button class="nav-link w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-on-surface" data-view="my-posts">My Posts & Applications</button>
+      <button class="nav-link w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-on-surface" data-view="workspace">Collaboration Workspace</button>
+      <button class="nav-link w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-on-surface" data-view="messages">Messages</button>
+      <button class="nav-link w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-on-surface" data-view="trust">Trust & Safety</button>
+      <button class="nav-link w-full text-left px-3 py-2 rounded-lg text-xs font-semibold text-on-surface" data-view="admin">Admin Console</button>
+      <button class="nav-trigger w-full mt-2 py-2 px-3 rounded-lg bg-primary text-on-primary text-xs font-semibold text-center block" data-view="create">+ Create Requirement</button>
+    </div>
+  </header>
+
+  <!-- APP CONTENT CONTAINER (Dynamic View Switcher) -->
+  <main class="flex-1 w-full pb-16" id="app-content">
+
+    <!-- ========================================== -->
+    <!-- VIEW 1: FEED & DISCOVER MARKETPLACE       -->
+    <!-- ========================================== -->
+    <section id="view-feed" class="app-view animate-fade-in">
+      <!-- Search & Command Header -->
+      <div class="bg-surface-container-low border-b border-surface-container-highest/60 py-6 px-4 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col gap-4">
+          
+          <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+            <!-- Search Bar with Instant Filter -->
+            <div class="relative flex-1 max-w-3xl">
+              <div class="relative flex items-center bg-surface-container-lowest rounded-2xl shadow-card px-4 py-3 border border-surface-container-high/60 focus-within:border-primary/50 transition-all">
+                <span class="material-symbols-outlined text-[22px] text-on-surface-variant mr-3">search</span>
+                <input type="text" id="feed-search-input" placeholder="Search by role, stack (React, Postgres, Supabase), founder, or industry..." class="w-full bg-transparent text-sm text-on-surface placeholder:text-outline focus:outline-none"/>
+                <button id="clear-search-btn" class="hidden p-1 text-on-surface-variant hover:text-on-surface rounded-full">
+                  <span class="material-symbols-outlined text-[18px]">cancel</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Active View Counter & Saved Filter Trigger -->
+            <div class="flex items-center gap-3 justify-between lg:justify-end">
+              <div class="flex items-center gap-2 bg-surface-container-highest/60 rounded-full px-4 py-1.5 text-xs">
+                <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                <span class="font-semibold text-on-surface" id="mode-status-text">Viewing as Builder</span>
+                <span class="text-on-surface-variant text-[11px]">(Live Opportunities)</span>
+              </div>
+
+              <button id="toggle-saved-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-surface-container-lowest hover:bg-surface-container text-on-surface shadow-xs text-xs font-semibold transition-all">
+                <span class="material-symbols-outlined text-[18px] text-primary">bookmark</span>
+                <span>Saved Posts</span>
+                <span class="bg-primary text-on-primary text-[10px] px-1.5 py-0.2 rounded-full font-bold ml-1" id="saved-count-badge">0</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Category Pill Carousel -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none text-xs font-semibold" id="category-pills">
+            <button class="cat-pill px-4 py-1.5 rounded-full bg-primary text-on-primary shadow-xs shrink-0 flex items-center gap-1.5 active" data-category="all">
+              <span class="material-symbols-outlined text-[16px]">apps</span>
+              <span>All Categories</span>
+            </button>
+            <button class="cat-pill px-4 py-1.5 rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-all shrink-0 flex items-center gap-1.5 border border-surface-container-high/60" data-category="Engineering">
+              <span class="material-symbols-outlined text-[16px] text-primary">terminal</span>
+              <span>Engineering</span>
+            </button>
+            <button class="cat-pill px-4 py-1.5 rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-all shrink-0 flex items-center gap-1.5 border border-surface-container-high/60" data-category="Design">
+              <span class="material-symbols-outlined text-[16px] text-secondary">palette</span>
+              <span>Design & UX</span>
+            </button>
+            <button class="cat-pill px-4 py-1.5 rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-all shrink-0 flex items-center gap-1.5 border border-surface-container-high/60" data-category="Product">
+              <span class="material-symbols-outlined text-[16px] text-tertiary">hub</span>
+              <span>Product Architecture</span>
+            </button>
+            <button class="cat-pill px-4 py-1.5 rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-all shrink-0 flex items-center gap-1.5 border border-surface-container-high/60" data-category="Marketing">
+              <span class="material-symbols-outlined text-[16px] text-outline">campaign</span>
+              <span>Growth & Marketing</span>
+            </button>
+            <button class="cat-pill px-4 py-1.5 rounded-full bg-surface-container-lowest text-on-surface hover:bg-surface-container transition-all shrink-0 flex items-center gap-1.5 border border-surface-container-high/60" data-category="Finance">
+              <span class="material-symbols-outlined text-[16px] text-outline">account_balance</span>
+              <span>Finance & Legal</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Feed Layout (Sidebar Filters + Feed Column) -->
+      <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 flex flex-col lg:flex-row items-start gap-8">
+        
+        <!-- SIDEBAR FILTERS (Left 280px) -->
+        <aside class="w-full lg:w-72 shrink-0 flex flex-col gap-6">
+          <div class="bg-surface-container-lowest rounded-2xl p-5 shadow-card border border-surface-container-high/60 space-y-5">
+            
+            <div class="flex items-center justify-between pb-1 border-b border-surface-container-high">
+              <span class="font-heading font-bold text-sm text-on-surface flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[18px] text-primary">filter_alt</span>
+                Marketplace Filters
+              </span>
+              <button id="reset-filters-btn" class="text-xs text-primary font-semibold hover:underline">Reset All</button>
+            </div>
+
+            <!-- Compensation Type Filter -->
+            <div class="space-y-2">
+              <label class="text-xs font-bold text-on-surface uppercase tracking-wider">Compensation Model</label>
+              <div class="space-y-2 text-xs" id="comp-filter-group">
+                <label class="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+                  <input type="checkbox" value="Both" class="filter-comp rounded text-primary accent-primary" checked/>
+                  <span>Cash + Equity Split</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+                  <input type="checkbox" value="Cash" class="filter-comp rounded text-primary accent-primary" checked/>
+                  <span>Cash Only</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+                  <input type="checkbox" value="Equity" class="filter-comp rounded text-primary accent-primary" checked/>
+                  <span>Equity Only</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+                  <input type="checkbox" value="Negotiable" class="filter-comp rounded text-primary accent-primary" checked/>
+                  <span>Negotiable</span>
+                </label>
+              </div>
+
+              <!-- Statutory Equity Risk Callout -->
+              <div class="mt-3 p-3 bg-tertiary-container/10 border border-tertiary-container/30 rounded-xl flex items-start gap-2">
+                <span class="material-symbols-outlined text-[18px] text-tertiary shrink-0 mt-0.5">warning</span>
+                <p class="text-[11px] text-tertiary leading-snug">
+                  <strong>Statutory Equity Advisory:</strong> Early-stage startup equity is high-risk, volatile, and illiquid. CoBuild is a discovery service and does not guarantee valuation, cliff schedules, or enforceability.
+                </p>
+              </div>
+            </div>
+
+            <!-- Time Commitment -->
+            <div class="space-y-2 pt-2 border-t border-surface-container-high">
+              <label class="text-xs font-bold text-on-surface uppercase tracking-wider">Engagement Commitment</label>
+              <div class="space-y-2 text-xs" id="commitment-filter-group">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" value="part_time" class="filter-commitment rounded text-primary accent-primary" checked/>
+                  <span>Part-Time (&lt; 20h/week)</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" value="milestone" class="filter-commitment rounded text-primary accent-primary" checked/>
+                  <span>Milestone / Sprint Deliverables</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" value="full_time" class="filter-commitment rounded text-primary accent-primary" checked/>
+                  <span>Full-Time Dedication (&gt; 35h/wk)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Founder Trust Level -->
+            <div class="space-y-2 pt-2 border-t border-surface-container-high">
+              <div class="flex items-center justify-between">
+                <label class="text-xs font-bold text-on-surface uppercase tracking-wider">Trust Level Markers</label>
+                <span class="material-symbols-outlined text-[16px] text-secondary">verified</span>
+              </div>
+              <div class="space-y-2 text-xs">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" value="identity" class="filter-trust rounded text-secondary accent-secondary" checked/>
+                  <span class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px] text-secondary">verified_user</span>
+                    <span>Identity Checked</span>
+                  </span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" value="company" class="filter-trust rounded text-secondary accent-secondary" checked/>
+                  <span class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px] text-primary">domain_verification</span>
+                    <span>Company Checked</span>
+                  </span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" value="portfolio" class="filter-trust rounded text-secondary accent-secondary" checked/>
+                  <span class="flex items-center gap-1">
+                    <span class="material-symbols-outlined text-[14px] text-outline">folder_shared</span>
+                    <span>Portfolio Checked</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Venture Stage -->
+            <div class="space-y-2 pt-2 border-t border-surface-container-high">
+              <label class="text-xs font-bold text-on-surface uppercase tracking-wider">Venture Stage</label>
+              <div class="flex flex-wrap gap-1.5 text-xs" id="stage-filter-group">
+                <button class="stage-pill px-2.5 py-1 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors text-[11px] font-medium" data-stage="Pre-seed">Pre-seed</button>
+                <button class="stage-pill px-2.5 py-1 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors text-[11px] font-medium" data-stage="Seed">Seed</button>
+                <button class="stage-pill px-2.5 py-1 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors text-[11px] font-medium" data-stage="Series A">Series A</button>
+                <button class="stage-pill px-2.5 py-1 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors text-[11px] font-medium" data-stage="Bootstrap">Bootstrap / Lab</button>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+
+        <!-- CENTER OPPORTUNITY FEED (Right Column) -->
+        <main class="flex-1 w-full space-y-4">
+          
+          <!-- Feed Sorting Toolbar -->
+          <div class="bg-surface-container-lowest rounded-2xl p-4 shadow-card border border-surface-container-high/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-on-surface-variant">Showing</span>
+              <span class="text-xs font-bold text-on-surface bg-surface-container px-2 py-0.5 rounded-full" id="visible-count">0 Opportunities</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-on-surface-variant">Sort:</span>
+              <div class="inline-flex p-1 bg-surface-container-low rounded-xl border border-surface-container-high/60 text-xs">
+                <button id="sort-match-btn" class="px-3 py-1 bg-surface-container-lowest text-primary font-bold rounded-lg shadow-xs flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+                  <span>Best Match</span>
+                </button>
+                <button id="sort-newest-btn" class="px-3 py-1 text-on-surface-variant hover:text-on-surface font-medium rounded-lg transition-colors">
+                  <span>Newest</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opportunities Stream Container -->
+          <div id="opportunities-feed" class="space-y-5">
+            <!-- Dynamic Cards Populated via app.js -->
+          </div>
+
+        </main>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 2: FOUNDER STUDIO / CREATE REQUIREMENT-->
+    <!-- ========================================== -->
+    <section id="view-create" class="app-view hidden animate-fade-in">
+      
+      <!-- Stepper Top Bar -->
+      <div class="bg-surface-container-low border-b border-surface-container-highest/60 py-4 px-4 lg:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2 text-xs text-on-surface-variant">
+              <button class="nav-trigger hover:text-primary transition-colors flex items-center gap-1" data-view="feed">
+                <span class="material-symbols-outlined text-[14px]">arrow_back</span>
+                Back to Feed
+              </button>
+              <span>/</span>
+              <span class="font-semibold text-primary">Founder Studio</span>
+            </div>
+            <h1 class="font-heading font-extrabold text-2xl text-primary mt-1">Structured Post Architect</h1>
+          </div>
+
+          <!-- Wizard Progress Stepper -->
+          <div class="flex items-center gap-2 text-xs">
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary text-on-primary font-semibold shadow-xs">
+              <span class="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center text-[10px]">1</span>
+              <span>Scope & Architecture</span>
+            </div>
+            <div class="w-4 h-0.5 bg-outline-variant"></div>
+            <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-medium">
+              <span class="w-4 h-4 rounded-full bg-surface-container-highest flex items-center justify-center text-[10px]">2</span>
+              <span>Terms & Compensation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Split Screen: 60% Form / 40% Live Preview & Quality Auditor -->
+      <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- LEFT FORM COLUMN (7 cols = ~60%) -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <!-- Section 1: Basic Info -->
+            <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-surface-container-high/60 space-y-5">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-extrabold tracking-widest uppercase px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed">Section 01</span>
+                <span class="text-xs text-secondary font-medium flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Live synchronizing
+                </span>
+              </div>
+              <h2 class="font-heading font-bold text-lg text-on-surface">Requirement Core</h2>
+
+              <!-- Title -->
+              <div class="space-y-1.5">
+                <label for="create-title" class="text-xs font-bold text-on-surface">Requirement Title *</label>
+                <input type="text" id="create-title" placeholder="e.g. Senior Backend Architect for B2B FinTech MVP" value="Lead Full-Stack Engineer for Multi-Tenant Collaboration Platform" class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-surface-container-high/60 text-sm focus:outline-none focus:border-primary focus:bg-surface-container-lowest transition-all"/>
+                <p class="text-[11px] text-on-surface-variant">Include seniority, tech focus, and venture stage for 3.4x faster builder matches.</p>
+              </div>
+
+              <!-- Category -->
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold text-on-surface">Category Classification *</label>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" id="create-category-selector">
+                  <button type="button" class="create-cat-btn active py-2 px-3 rounded-xl bg-primary text-on-primary text-xs font-semibold shadow-xs" data-cat="Engineering">Engineering</button>
+                  <button type="button" class="create-cat-btn py-2 px-3 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-semibold transition-colors" data-cat="Design">Design</button>
+                  <button type="button" class="create-cat-btn py-2 px-3 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-semibold transition-colors" data-cat="Product">Product</button>
+                  <button type="button" class="create-cat-btn py-2 px-3 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface text-xs font-semibold transition-colors" data-cat="Marketing">Marketing</button>
+                </div>
+              </div>
+
+              <!-- Problem Statement -->
+              <div class="space-y-1.5">
+                <label for="create-summary" class="text-xs font-bold text-on-surface">Context & Business Obstacle *</label>
+                <textarea id="create-summary" rows="3" class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-surface-container-high/60 text-sm focus:outline-none focus:border-primary focus:bg-surface-container-lowest transition-all" placeholder="Describe the current traction and what technical deliverable this collaboration will solve...">We have signed pilot agreements with 4 enterprise clients. We need a seasoned engineer to build our core multi-tenant Postgres schema with row-level security and high-throughput real-time webhooks.</textarea>
+              </div>
+            </div>
+
+            <!-- Section 2: Milestones & Scope Checklist -->
+            <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-surface-container-high/60 space-y-5">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-extrabold tracking-widest uppercase px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed">Section 02</span>
+                <button type="button" id="add-deliverable-btn" class="text-xs font-bold text-primary hover:text-primary-container flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[16px]">add_circle</span>
+                  <span>Add Deliverable Milestone</span>
+                </button>
+              </div>
+              <h2 class="font-heading font-bold text-lg text-on-surface">Deliverables & Acceptance Scope</h2>
+              <p class="text-xs text-on-surface-variant">Each deliverable acts as a verified release gate inside the Collaboration Workspace.</p>
+
+              <div class="space-y-2.5" id="create-deliverables-list">
+                <div class="flex items-center gap-2 bg-surface-container-low p-2.5 rounded-xl border border-surface-container-high/60">
+                  <span class="material-symbols-outlined text-secondary text-[20px]">check_box</span>
+                  <input type="text" class="deliverable-text flex-1 bg-transparent text-xs text-on-surface focus:outline-none" value="PostgreSQL multi-tenant schema with Supabase Auth & RLS policies"/>
+                  <button type="button" class="del-remove text-outline hover:text-error p-1"><span class="material-symbols-outlined text-[16px]">close</span></button>
+                </div>
+                <div class="flex items-center gap-2 bg-surface-container-low p-2.5 rounded-xl border border-surface-container-high/60">
+                  <span class="material-symbols-outlined text-secondary text-[20px]">check_box</span>
+                  <input type="text" class="deliverable-text flex-1 bg-transparent text-xs text-on-surface focus:outline-none" value="Stripe subscription webhook processing with idempotent event handling"/>
+                  <button type="button" class="del-remove text-outline hover:text-error p-1"><span class="material-symbols-outlined text-[16px]">close</span></button>
+                </div>
+                <div class="flex items-center gap-2 bg-surface-container-low p-2.5 rounded-xl border border-surface-container-high/60">
+                  <span class="material-symbols-outlined text-secondary text-[20px]">check_box</span>
+                  <input type="text" class="deliverable-text flex-1 bg-transparent text-xs text-on-surface focus:outline-none" value="Automated end-to-end integration tests & CI/CD pipeline"/>
+                  <button type="button" class="del-remove text-outline hover:text-error p-1"><span class="material-symbols-outlined text-[16px]">close</span></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Section 3: Skills & Commitment -->
+            <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-surface-container-high/60 space-y-5">
+              <span class="text-[11px] font-extrabold tracking-widest uppercase px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed">Section 03</span>
+              <h2 class="font-heading font-bold text-lg text-on-surface">Skills & Commitment Model</h2>
+
+              <!-- Skill Tagging -->
+              <div class="space-y-2">
+                <label class="text-xs font-bold text-on-surface">Required Skills (Comma or Enter separated)</label>
+                <div class="p-2.5 bg-surface-container-low rounded-xl border border-surface-container-high/60 flex flex-wrap items-center gap-1.5" id="create-skills-wrapper">
+                  <span class="skill-tag px-2.5 py-1 rounded-lg bg-surface-container-highest text-primary text-xs font-semibold flex items-center gap-1">
+                    React <button type="button" class="remove-tag text-outline hover:text-error"><span class="material-symbols-outlined text-[12px]">close</span></button>
+                  </span>
+                  <span class="skill-tag px-2.5 py-1 rounded-lg bg-surface-container-highest text-primary text-xs font-semibold flex items-center gap-1">
+                    TypeScript <button type="button" class="remove-tag text-outline hover:text-error"><span class="material-symbols-outlined text-[12px]">close</span></button>
+                  </span>
+                  <span class="skill-tag px-2.5 py-1 rounded-lg bg-surface-container-highest text-primary text-xs font-semibold flex items-center gap-1">
+                    PostgreSQL <button type="button" class="remove-tag text-outline hover:text-error"><span class="material-symbols-outlined text-[12px]">close</span></button>
+                  </span>
+                  <input type="text" id="create-skill-input" placeholder="Type and hit Enter..." class="bg-transparent text-xs text-on-surface focus:outline-none min-w-[120px] p-1"/>
+                </div>
+              </div>
+
+              <!-- Engagement Track -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <label class="p-3 rounded-xl border border-surface-container-high bg-surface-container-low cursor-pointer hover:border-primary transition-all flex flex-col gap-1">
+                  <div class="flex items-center justify-between">
+                    <span class="material-symbols-outlined text-primary text-[20px]">timelapse</span>
+                    <input type="radio" name="create-commitment" value="part_time" checked class="accent-primary"/>
+                  </div>
+                  <span class="text-xs font-bold text-on-surface">Part-Time</span>
+                  <span class="text-[11px] text-on-surface-variant">15-25 hrs/week</span>
+                </label>
+                <label class="p-3 rounded-xl border border-surface-container-high bg-surface-container-low cursor-pointer hover:border-primary transition-all flex flex-col gap-1">
+                  <div class="flex items-center justify-between">
+                    <span class="material-symbols-outlined text-primary text-[20px]">task_alt</span>
+                    <input type="radio" name="create-commitment" value="milestone" class="accent-primary"/>
+                  </div>
+                  <span class="text-xs font-bold text-on-surface">Milestone</span>
+                  <span class="text-[11px] text-on-surface-variant">Sprint deliverables</span>
+                </label>
+                <label class="p-3 rounded-xl border border-surface-container-high bg-surface-container-low cursor-pointer hover:border-primary transition-all flex flex-col gap-1">
+                  <div class="flex items-center justify-between">
+                    <span class="material-symbols-outlined text-primary text-[20px]">schedule</span>
+                    <input type="radio" name="create-commitment" value="full_time" class="accent-primary"/>
+                  </div>
+                  <span class="text-xs font-bold text-on-surface">Full-Time</span>
+                  <span class="text-[11px] text-on-surface-variant">35+ hrs/week</span>
+                </label>
+              </div>
+
+            </div>
+
+            <!-- Section 4: Compensation & Terms -->
+            <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-surface-container-high/60 space-y-5">
+              <span class="text-[11px] font-extrabold tracking-widest uppercase px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed">Section 04</span>
+              <h2 class="font-heading font-bold text-lg text-on-surface">Commercial Offer & Equity Terms</h2>
+
+              <!-- Model Selector -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 p-1 bg-surface-container-low rounded-xl" id="create-comp-tabs">
+                <button type="button" class="create-comp-tab active py-2 rounded-lg bg-surface-container-lowest text-primary font-bold text-xs shadow-xs" data-model="Both">Cash + Equity</button>
+                <button type="button" class="create-comp-tab py-2 rounded-lg text-on-surface-variant font-medium text-xs hover:text-on-surface" data-model="Cash">Cash Only</button>
+                <button type="button" class="create-comp-tab py-2 rounded-lg text-on-surface-variant font-medium text-xs hover:text-on-surface" data-model="Equity">Equity Only</button>
+                <button type="button" class="create-comp-tab py-2 rounded-lg text-on-surface-variant font-medium text-xs hover:text-on-surface" data-model="Negotiable">Negotiable</button>
+              </div>
+
+              <!-- Cash Input -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="space-y-1.5">
+                  <label class="text-xs font-bold text-on-surface">Cash Allocation ($ USD / mo or project)</label>
+                  <input type="text" id="create-cash-amount" value="$5,000 – $7,500 USD / mo" class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-surface-container-high/60 text-xs focus:outline-none focus:border-primary"/>
+                </div>
+                <div class="space-y-1.5">
+                  <label class="text-xs font-bold text-on-surface">Venture Stage</label>
+                  <select id="create-stage-select" class="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-surface-container-high/60 text-xs focus:outline-none">
+                    <option value="Pre-seed" selected>Pre-seed</option>
+                    <option value="Seed">Seed</option>
+                    <option value="Series A">Series A</option>
+                    <option value="Bootstrap">Bootstrap / Lab</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Equity Grant Slider -->
+              <div class="p-4 bg-surface-container-low rounded-xl border border-surface-container-high/60 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-on-surface">Equity Grant Range:</span>
+                  <span class="text-xs font-extrabold text-primary px-3 py-1 bg-surface-container-lowest rounded-full shadow-xs" id="create-equity-display">2.0% Equity (4-yr Vesting, 1-yr Cliff)</span>
+                </div>
+                <input type="range" id="create-equity-slider" min="0.5" max="10.0" step="0.5" value="2.0" class="w-full accent-primary cursor-pointer"/>
+                <div class="flex justify-between text-[11px] text-on-surface-variant">
+                  <span>0.5% Advisory</span>
+                  <span>2.5% Key Contributor</span>
+                  <span>10.0%+ Co-Founder</span>
+                </div>
+              </div>
+
+              <!-- Platform Legal Notice -->
+              <div class="p-3.5 bg-tertiary-container/10 border border-tertiary-container/30 rounded-xl flex items-start gap-2.5">
+                <span class="material-symbols-outlined text-[20px] text-tertiary shrink-0 mt-0.5">shield</span>
+                <div class="text-[11px] text-tertiary leading-relaxed">
+                  <strong>Strict Connection Disclaimer:</strong> Terms listed in this posting represent discussion terms only, not a legal contract. CoBuild is not an escrow holder, broker-dealer, or law firm. All IP assignments and equity grants must be executed privately between parties.
+                </div>
+              </div>
+
+              <!-- Publish Button -->
+              <div class="pt-4 flex items-center justify-end gap-3">
+                <button type="button" class="nav-trigger px-5 py-2.5 rounded-xl border border-surface-container-highest text-xs font-bold hover:bg-surface-container transition-colors" data-view="feed">Cancel</button>
+                <button type="button" id="publish-requirement-btn" class="px-7 py-2.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary text-xs font-bold shadow-sm transition-all flex items-center gap-1.5 active:scale-95">
+                  <span class="material-symbols-outlined text-[18px]">publish</span>
+                  <span>Publish Requirement</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- RIGHT AUDITOR & LIVE PREVIEW COLUMN (5 cols = ~40%) -->
+          <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
+            
+            <!-- Quality Auditor Bento Box -->
+            <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-surface-container-high/60 space-y-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[20px] text-secondary">analytics</span>
+                  <h3 class="font-heading font-bold text-sm text-on-surface">Requirement Health</h3>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-extrabold uppercase">High Match Tier</span>
+              </div>
+
+              <!-- Radial Gauge Simulator -->
+              <div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-xl">
+                <div class="relative w-16 h-16 flex items-center justify-center shrink-0">
+                  <svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+                    <circle cx="18" cy="18" r="14" fill="none" class="stroke-surface-container-highest" stroke-width="3.5"></circle>
+                    <circle cx="18" cy="18" r="14" fill="none" class="stroke-secondary" stroke-width="3.5" stroke-dasharray="88, 100" stroke-linecap="round"></circle>
+                  </svg>
+                  <span class="absolute font-heading font-extrabold text-sm text-primary">88%</span>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-xs font-bold text-on-surface">Optimal Precision Score</span>
+                  <span class="text-[11px] text-on-surface-variant">Structured deliverables + explicit milestone scope reduce application noise by 45%.</span>
+                </div>
+              </div>
+
+              <!-- Health Checklist -->
+              <div class="space-y-1.5 text-xs">
+                <div class="flex items-center gap-2 text-secondary">
+                  <span class="material-symbols-outlined text-[16px]">check_circle</span>
+                  <span>Seniority & tech role clearly specified</span>
+                </div>
+                <div class="flex items-center gap-2 text-secondary">
+                  <span class="material-symbols-outlined text-[16px]">check_circle</span>
+                  <span>Scope includes &gt;= 3 verified deliverables</span>
+                </div>
+                <div class="flex items-center gap-2 text-secondary">
+                  <span class="material-symbols-outlined text-[16px]">check_circle</span>
+                  <span>Compensation split transparency verified</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Card Preview -->
+            <div class="space-y-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Live Marketplace Feed Preview</span>
+              <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border-2 border-primary/20 space-y-3" id="live-card-preview">
+                <div class="flex items-center gap-2.5">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&q=80" class="w-10 h-10 rounded-full object-cover ring-1 ring-surface-container-highest"/>
+                  <div>
+                    <div class="flex items-center gap-1.5">
+                      <span class="font-bold text-xs text-on-surface">Elena Vance</span>
+                      <span class="px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold">Identity Checked</span>
+                    </div>
+                    <span class="text-[11px] text-on-surface-variant">Founder @ Kestrel Flow • Pre-seed</span>
+                  </div>
+                </div>
+
+                <h4 class="font-heading font-bold text-sm text-primary" id="preview-title">Lead Full-Stack Engineer for Multi-Tenant Collaboration Platform</h4>
+                <p class="text-xs text-on-surface-variant line-clamp-2" id="preview-summary">We have signed pilot agreements with 4 enterprise clients. We need a seasoned engineer to build our core multi-tenant Postgres schema...</p>
+
+                <div class="flex flex-wrap gap-1.5" id="preview-tags">
+                  <span class="px-2.5 py-0.5 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed-variant text-[11px] font-semibold" id="preview-cash">$5,000 – $7,500 USD / mo</span>
+                  <span class="px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[11px] font-semibold" id="preview-equity">+ 2.0% Equity</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 3: COLLABORATION WORKSPACE           -->
+    <!-- ========================================== -->
+    <section id="view-workspace" class="app-view hidden animate-fade-in">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 space-y-6">
+        
+        <!-- Binding Contract Advisory Banner -->
+        <div class="rounded-2xl bg-tertiary-container/10 border border-tertiary-container/30 p-4 shadow-xs">
+          <div class="flex items-start gap-3">
+            <div class="p-2 rounded-xl bg-tertiary text-on-tertiary shrink-0 mt-0.5">
+              <span class="material-symbols-outlined text-[20px]">gavel</span>
+            </div>
+            <div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-2">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-xs text-tertiary uppercase tracking-wider">Binding Contract Advisory</span>
+                  <span class="px-2 py-0.5 rounded text-[10px] bg-tertiary text-on-tertiary font-bold uppercase">Strict Platform Rule</span>
+                </div>
+                <p class="text-xs text-on-surface-variant mt-0.5">
+                  Chat alone is <strong>not a complete contract</strong>. CoBuild provides structured mutual checklists but does not adjudicate bank wires, cap tables, or IP assignments. Confirm all 5 written terms below to unlock active execution status.
+                </p>
+              </div>
+              <a href="#trust" class="nav-trigger shrink-0 text-xs font-bold text-primary hover:underline flex items-center gap-1" data-view="trust">
+                <span>Platform Guarantees & Safety</span>
+                <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Collaboration Header Card -->
+        <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-surface-container-high/60 space-y-6">
+          <div class="flex flex-col xl:flex-row xl:items-start justify-between gap-6">
+            
+            <!-- Left: Project Identity & Member Cards -->
+            <div class="flex-1 min-w-0 space-y-3">
+              <div class="flex flex-wrap items-center gap-2 text-xs">
+                <span class="px-2.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-mono font-medium">ID: CB-9824-CORE</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold flex items-center gap-1" id="workspace-status-badge">
+                  <span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+                  <span id="workspace-status-text">Stage 1: Pending Setup (3/5 Terms Signed)</span>
+                </span>
+                <span class="text-on-surface-variant">Created Nov 18 • Target: Jan 20</span>
+              </div>
+
+              <h1 class="font-heading font-extrabold text-2xl text-primary tracking-tight">
+                B2B FinTech MVP - Backend Core & Authentication
+              </h1>
+
+              <!-- Dual-Verified Participants Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                
+                <!-- Founder Pill -->
+                <div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low border border-surface-container-high/60">
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&q=80" alt="Elena Vance" class="w-10 h-10 rounded-full object-cover ring-2 ring-secondary"/>
+                    <div>
+                      <div class="flex items-center gap-1.5">
+                        <span class="text-xs font-bold text-on-surface">Elena Vance</span>
+                        <span class="px-1.5 py-0.2 rounded bg-primary-fixed text-on-primary-fixed text-[10px] font-bold">Founder</span>
+                      </div>
+                      <span class="text-[11px] text-secondary font-medium flex items-center gap-0.5">
+                        <span class="material-symbols-outlined text-[12px]">verified</span> Identity & Company Checked
+                      </span>
+                    </div>
+                  </div>
+                  <button class="nav-trigger p-2 text-on-surface-variant hover:text-primary rounded-lg hover:bg-surface-container-lowest" data-view="messages" title="Open Chat with Elena">
+                    <span class="material-symbols-outlined text-[20px]">chat</span>
+                  </button>
+                </div>
+
+                <!-- Builder Pill (Current User) -->
+                <div class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low border border-surface-container-high/60">
+                  <div class="flex items-center gap-3">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" alt="Alex Rivera" class="w-10 h-10 rounded-full object-cover ring-2 ring-secondary"/>
+                    <div>
+                      <div class="flex items-center gap-1.5">
+                        <span class="text-xs font-bold text-on-surface">Alex Rivera (You)</span>
+                        <span class="px-1.5 py-0.2 rounded bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold">Builder</span>
+                      </div>
+                      <span class="text-[11px] text-secondary font-medium flex items-center gap-0.5">
+                        <span class="material-symbols-outlined text-[12px]">verified</span> Portfolio & Identity Checked
+                      </span>
+                    </div>
+                  </div>
+                  <button class="nav-trigger p-2 text-on-surface-variant hover:text-primary rounded-lg hover:bg-surface-container-lowest" data-view="trust" title="View Trust Dossier">
+                    <span class="material-symbols-outlined text-[20px]">badge</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Right: State Stepper & Stage Gate Controls -->
+            <div class="w-full xl:w-96 p-4 rounded-xl bg-surface-container-low border border-surface-container-high/60 flex flex-col justify-between gap-4">
+              <div>
+                <div class="flex items-center justify-between mb-3 text-xs">
+                  <span class="font-bold uppercase tracking-wider text-on-surface-variant">Collaboration State</span>
+                  <span class="font-bold text-primary" id="stage-number">Stage 1 of 3</span>
+                </div>
+
+                <!-- Visual Stepper Progress -->
+                <div class="flex items-center justify-between relative px-2 mb-2">
+                  <div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-1 bg-surface-container-highest rounded-full -z-0"></div>
+                  <div class="absolute left-6 w-1/4 top-1/2 -translate-y-1/2 h-1 bg-primary rounded-full -z-0" id="stepper-bar"></div>
+
+                  <!-- Step 1 -->
+                  <div class="flex flex-col items-center gap-1 relative z-10">
+                    <div class="w-7 h-7 rounded-full bg-primary text-on-primary text-xs font-bold flex items-center justify-center shadow-xs" id="step-node-1">1</div>
+                    <span class="text-[10px] font-bold text-primary">Setup</span>
+                  </div>
+                  <!-- Step 2 -->
+                  <div class="flex flex-col items-center gap-1 relative z-10">
+                    <div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface-variant text-xs font-bold flex items-center justify-center" id="step-node-2">2</div>
+                    <span class="text-[10px] font-medium text-on-surface-variant">Active</span>
+                  </div>
+                  <!-- Step 3 -->
+                  <div class="flex flex-col items-center gap-1 relative z-10">
+                    <div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface-variant text-xs font-bold flex items-center justify-center" id="step-node-3">3</div>
+                    <span class="text-[10px] font-medium text-on-surface-variant">Done</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Action Buttons -->
+              <div class="flex items-center gap-2 pt-2 border-t border-surface-container-high text-xs">
+                <button id="pause-collab-btn" class="flex-1 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container font-semibold transition-colors flex items-center justify-center gap-1">
+                  <span class="material-symbols-outlined text-[16px]">pause</span> Pause
+                </button>
+                <button id="flag-collab-btn" class="flex-1 py-1.5 rounded-lg text-error hover:bg-error-container/30 font-semibold transition-colors flex items-center justify-center gap-1">
+                  <span class="material-symbols-outlined text-[16px]">flag</span> Dispute / Flag
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Phase 2 In-App Video Call Teaser -->
+          <div class="p-3 bg-surface-container rounded-xl flex items-center justify-between text-xs text-on-surface-variant">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded bg-primary text-on-primary text-[10px] font-bold uppercase">Phase 2 Preview</span>
+              <span class="material-symbols-outlined text-secondary text-[16px]">videocam</span>
+              <span>Encrypted peer-to-peer screen sharing & scheduled architecture sync rooms.</span>
+            </div>
+            <span class="font-semibold text-primary">Coming Soon</span>
+          </div>
+        </div>
+
+        <!-- Main Workspace Tabs: Written Terms Checklist vs Milestones -->
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+          
+          <!-- LEFT TRACK: Mutual Written-Terms Agreement (8 cols) -->
+          <div class="xl:col-span-8 space-y-6">
+            <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-surface-container-high/60 space-y-6">
+              
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-surface-container-high">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h2 class="font-heading font-extrabold text-lg text-on-surface">Mutual Written-Terms Agreement</h2>
+                    <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-tertiary-fixed text-on-tertiary-fixed" id="terms-pending-badge">2 Action Required</span>
+                  </div>
+                  <p class="text-xs text-on-surface-variant mt-0.5">Every clause requires unilateral confirmation from both Founder and Builder before code commits begin.</p>
+                </div>
+                
+                <!-- Progress Percentage -->
+                <div class="flex items-center gap-3 bg-surface-container-low px-4 py-2 rounded-xl">
+                  <span class="font-heading font-extrabold text-lg text-primary" id="terms-percent">60%</span>
+                  <span class="text-xs text-on-surface-variant">Mutual Confirmation</span>
+                </div>
+              </div>
+
+              <!-- 5 Clauses Interactive Checklist -->
+              <div class="space-y-4" id="written-terms-checklist">
+                
+                <!-- Clause 1: Scope & Acceptance -->
+                <div class="p-4 rounded-xl bg-surface-container-low border border-surface-container-high/60 space-y-2">
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-full bg-secondary text-on-secondary text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">
+                        <span class="material-symbols-outlined text-[14px]">check</span>
+                      </span>
+                      <div>
+                        <span class="font-bold text-xs text-on-surface">1. Scope & Acceptance Criteria</span>
+                        <p class="text-xs text-on-surface-variant mt-0.5">Postgres schema with RLS, Supabase auth endpoints, and Stripe metered billing webhooks.</p>
+                      </div>
+                    </div>
+                    <span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-[11px] font-semibold flex items-center gap-1 shrink-0">
+                      <span class="material-symbols-outlined text-[14px]">done_all</span> Both Confirmed
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Clause 2: Compensation Terms (Action Required for Builder) -->
+                <div class="p-4 rounded-xl bg-tertiary-container/10 border border-tertiary-container/40 space-y-3" id="clause-2-card">
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-full bg-tertiary text-on-tertiary text-xs flex items-center justify-center font-bold shrink-0 mt-0.5" id="clause-2-icon">
+                        <span class="material-symbols-outlined text-[14px]">pending</span>
+                      </span>
+                      <div>
+                        <div class="flex items-center gap-2">
+                          <span class="font-bold text-xs text-on-surface">2. Agreed Private Compensation</span>
+                          <span class="px-1.5 py-0.2 rounded bg-tertiary text-on-tertiary text-[10px] font-bold" id="clause-2-action-pill">Action Required</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant mt-1">
+                          <strong>$7,000 USD</strong> direct wire upon Milestone 2 approval + <strong>1.5% Advisor Equity</strong> (subject to executed Carta grant).
+                        </p>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-end gap-1 text-[11px]">
+                      <span class="text-secondary font-medium">Founder: Confirmed ✓</span>
+                      <span class="font-bold text-tertiary" id="clause-2-builder-status">Builder: Pending</span>
+                    </div>
+                  </div>
+
+                  <!-- Statutory Reminder -->
+                  <div class="p-2.5 bg-surface-container-lowest rounded-lg border border-surface-container-high/60 text-[11px] text-on-surface-variant flex items-center justify-between gap-3">
+                    <span>Parties acknowledge CoBuild is purely an introducer and never holds custodial escrow or guarantees share issuance.</span>
+                    <button type="button" id="sign-term-2-btn" class="px-4 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-xs font-bold transition-all shrink-0 shadow-xs">
+                      Sign & Confirm Term #2
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Clause 3: IP Ownership (Action Required for Builder) -->
+                <div class="p-4 rounded-xl bg-tertiary-container/10 border border-tertiary-container/40 space-y-3" id="clause-3-card">
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-full bg-tertiary text-on-tertiary text-xs flex items-center justify-center font-bold shrink-0 mt-0.5" id="clause-3-icon">
+                        <span class="material-symbols-outlined text-[14px]">pending</span>
+                      </span>
+                      <div>
+                        <div class="flex items-center gap-2">
+                          <span class="font-bold text-xs text-on-surface">3. IP Ownership & Work-for-Hire Clause</span>
+                          <span class="px-1.5 py-0.2 rounded bg-tertiary text-on-tertiary text-[10px] font-bold" id="clause-3-action-pill">Action Required</span>
+                        </div>
+                        <p class="text-xs text-on-surface-variant mt-1">
+                          All software commits, architectural designs, and schemas transfer exclusively to Founder upon clearance of agreed fees.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="flex flex-col items-end gap-1 text-[11px]">
+                      <span class="text-secondary font-medium">Founder: Confirmed ✓</span>
+                      <span class="font-bold text-tertiary" id="clause-3-builder-status">Builder: Pending</span>
+                    </div>
+                  </div>
+
+                  <div class="p-2.5 bg-surface-container-lowest rounded-lg border border-surface-container-high/60 text-[11px] text-on-surface-variant flex items-center justify-between gap-3">
+                    <span>Includes standard personal open-source tool retention carve-outs.</span>
+                    <button type="button" id="sign-term-3-btn" class="px-4 py-1.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-xs font-bold transition-all shrink-0 shadow-xs">
+                      Sign & Confirm Term #3
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Clause 4: NDA -->
+                <div class="p-4 rounded-xl bg-surface-container-low border border-surface-container-high/60 space-y-2">
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-full bg-secondary text-on-secondary text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">
+                        <span class="material-symbols-outlined text-[14px]">check</span>
+                      </span>
+                      <div>
+                        <span class="font-bold text-xs text-on-surface">4. Mutual Non-Disclosure Agreement (NDA)</span>
+                        <p class="text-xs text-on-surface-variant mt-0.5">Covers confidential business algorithms, client pipeline data, and unreleased product roadmaps.</p>
+                      </div>
+                    </div>
+                    <span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-[11px] font-semibold flex items-center gap-1 shrink-0">
+                      <span class="material-symbols-outlined text-[14px]">done_all</span> Both Confirmed
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Clause 5: Jurisdiction -->
+                <div class="p-4 rounded-xl bg-surface-container-low border border-surface-container-high/60 space-y-2">
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex items-start gap-2.5">
+                      <span class="w-6 h-6 rounded-full bg-secondary text-on-secondary text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">
+                        <span class="material-symbols-outlined text-[14px]">check</span>
+                      </span>
+                      <div>
+                        <span class="font-bold text-xs text-on-surface">5. Governing Law & Jurisdiction</span>
+                        <p class="text-xs text-on-surface-variant mt-0.5">Commercial governance under State of Delaware Chancery with mandatory 30-day pre-litigation conciliation.</p>
+                      </div>
+                    </div>
+                    <span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-[11px] font-semibold flex items-center gap-1 shrink-0">
+                      <span class="material-symbols-outlined text-[14px]">done_all</span> Both Confirmed
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- STAGE GATE LOCK ACTION BAR -->
+              <div class="p-4 rounded-xl bg-surface-container border border-surface-container-high flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-primary text-[24px]" id="stage-gate-icon">lock</span>
+                  <div>
+                    <span class="font-bold text-xs text-on-surface" id="stage-gate-title">Stage Gate: Lock Active Collaboration Status</span>
+                    <p class="text-xs text-on-surface-variant" id="stage-gate-desc">Both parties must confirm all 5 clauses to unlock "Active" execution status and milestone tracking.</p>
+                  </div>
+                </div>
+                <button type="button" id="unlock-active-btn" disabled class="px-6 py-2.5 rounded-xl bg-primary text-on-primary text-xs font-bold opacity-50 cursor-not-allowed shadow-none flex items-center gap-1.5 transition-all">
+                  <span class="material-symbols-outlined text-[16px]">verified</span>
+                  <span>Mark as Active (Locked)</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- RIGHT TRACK: Deliverables & Milestones (4 cols) -->
+          <div class="xl:col-span-4 space-y-6">
+            <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-surface-container-high/60 space-y-4">
+              <div class="flex items-center justify-between">
+                <h3 class="font-heading font-bold text-sm text-on-surface">Tracked Milestones</h3>
+                <span class="text-[11px] font-bold text-secondary">3 Sprints</span>
+              </div>
+
+              <div class="space-y-3 text-xs" id="workspace-milestones-list">
+                
+                <div class="p-3.5 rounded-xl bg-surface-container-low border border-surface-container-high/60 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-primary">Milestone 1</span>
+                    <span class="text-[11px] text-on-surface-variant">Due Dec 05</span>
+                  </div>
+                  <p class="text-xs font-semibold text-on-surface">PostgreSQL Schema & RLS Policies</p>
+                  <div class="flex items-center justify-between pt-1">
+                    <span class="text-[11px] text-secondary font-medium flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[14px]">check_circle</span> Verified & Tested
+                    </span>
+                    <span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold">Approved</span>
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-surface-container-low border border-surface-container-high/60 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-primary">Milestone 2</span>
+                    <span class="text-[11px] text-on-surface-variant">Due Dec 22</span>
+                  </div>
+                  <p class="text-xs font-semibold text-on-surface">JWT Authentication & RBAC Rules</p>
+                  <div class="flex items-center justify-between pt-1">
+                    <span class="text-[11px] text-tertiary font-medium">Under active review</span>
+                    <button type="button" id="approve-m2-btn" class="px-2.5 py-1 rounded bg-primary text-on-primary text-[10px] font-bold hover:bg-primary-container">Approve Deliverable</button>
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-surface-container-low border border-surface-container-high/60 space-y-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-bold text-primary">Milestone 3</span>
+                    <span class="text-[11px] text-on-surface-variant">Due Jan 15</span>
+                  </div>
+                  <p class="text-xs font-semibold text-on-surface">Stripe Metered Billing Engine & Webhooks</p>
+                  <div class="flex items-center justify-between pt-1">
+                    <span class="text-[11px] text-outline">Queued</span>
+                    <span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant text-[10px] font-medium">Pending M2</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Collaboration Activity Trail -->
+            <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-surface-container-high/60 space-y-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Audit Activity Feed</span>
+              <div class="space-y-3 text-xs" id="activity-log">
+                <div class="flex items-start gap-2 text-on-surface-variant">
+                  <span class="material-symbols-outlined text-[16px] text-secondary mt-0.5">verified</span>
+                  <div>
+                    <span class="font-medium text-on-surface">Elena Vance signed Term #1 & #4</span>
+                    <p class="text-[10px] text-outline">Nov 19, 14:32 UTC</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2 text-on-surface-variant">
+                  <span class="material-symbols-outlined text-[16px] text-primary mt-0.5">description</span>
+                  <div>
+                    <span class="font-medium text-on-surface">Alex Rivera uploaded architecture RFC draft</span>
+                    <p class="text-[10px] text-outline">Nov 20, 09:12 UTC</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 4: PRIVATE MESSAGES & SAFETY CHAT    -->
+    <!-- ========================================== -->
+    <section id="view-messages" class="app-view hidden animate-fade-in">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8 py-6">
+        
+        <!-- Encryption & Security Status Bar -->
+        <div class="mb-4 bg-surface-container-low px-4 py-2 rounded-xl border border-surface-container-high/60 flex flex-wrap items-center justify-between gap-2 text-xs text-on-surface-variant">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[16px] text-primary">lock</span>
+            <span class="font-semibold text-on-surface">End-to-End Encrypted Private Mesh</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            <span class="text-secondary font-medium">Session Key Validated</span>
+          </div>
+          <div class="flex items-center gap-4 text-[11px]">
+            <span>Sync Latency: <strong class="text-on-surface">18ms</strong></span>
+            <span class="flex items-center gap-1 text-secondary">
+              <span class="material-symbols-outlined text-[14px]">shield</span>
+              <span>Anti-solicitation filters active</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Chat Container Grid (4 cols Directory / 8 cols Chat Thread) -->
+        <div class="grid grid-cols-12 bg-surface-container-lowest rounded-2xl shadow-card border border-surface-container-high/60 overflow-hidden min-h-[640px]">
+          
+          <!-- Column 1: Conversations Directory (4 cols) -->
+          <aside class="col-span-12 lg:col-span-4 border-r border-surface-container-high/60 flex flex-col bg-surface-container-low/40">
+            
+            <div class="p-4 space-y-3 border-b border-surface-container-high/60">
+              <div class="flex items-center justify-between">
+                <h2 class="font-heading font-extrabold text-base text-primary">Direct Messages</h2>
+                <span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary text-[11px] font-bold">4 Channels</span>
+              </div>
+              <div class="relative">
+                <span class="material-symbols-outlined text-[16px] absolute left-3 top-2.5 text-outline">search</span>
+                <input type="text" id="chat-filter-input" placeholder="Search conversations..." class="w-full pl-8 pr-3 py-1.5 rounded-xl bg-surface-container border border-surface-container-high text-xs text-on-surface focus:outline-none"/>
+              </div>
+            </div>
+
+            <!-- Threads List -->
+            <div class="flex-1 overflow-y-auto divide-y divide-surface-container-high/40" id="chat-threads-list">
+              
+              <!-- Thread 1: Elena Vance (Active) -->
+              <div class="chat-thread-item active p-4 cursor-pointer hover:bg-surface-container-high/40 transition-colors bg-surface-container-lowest border-l-4 border-primary" data-partner="elena">
+                <div class="flex items-start gap-3">
+                  <div class="relative shrink-0">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&q=80" class="w-10 h-10 rounded-full object-cover ring-1 ring-surface-container-highest"/>
+                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-secondary ring-2 ring-white"></span>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-0.5">
+                      <span class="font-bold text-xs text-on-surface truncate">Elena Vance</span>
+                      <span class="text-[10px] text-outline">10:42 AM</span>
+                    </div>
+                    <span class="text-[11px] text-on-surface-variant block truncate">Founder @ Kestrel Flow</span>
+                    <p class="text-xs text-on-surface-variant truncate mt-1">Reviewed the initial diagram. Architecture matches targets.</p>
+                    <span class="mt-2 inline-block px-2 py-0.2 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-semibold">Active Collaboration</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Thread 2: Marcus Brody -->
+              <div class="chat-thread-item p-4 cursor-pointer hover:bg-surface-container-high/40 transition-colors" data-partner="marcus">
+                <div class="flex items-start gap-3">
+                  <div class="relative shrink-0">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80" class="w-10 h-10 rounded-full object-cover ring-1 ring-surface-container-highest"/>
+                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-outline ring-2 ring-white"></span>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-0.5">
+                      <span class="font-bold text-xs text-on-surface truncate">Marcus Brody</span>
+                      <span class="text-[10px] text-outline">Yesterday</span>
+                    </div>
+                    <span class="text-[11px] text-on-surface-variant block truncate">Lead @ Arkea Health</span>
+                    <p class="text-xs text-outline truncate mt-1">Counter-proposal sent for 0.75% milestone equity grant.</p>
+                    <span class="mt-2 inline-block px-2 py-0.2 rounded-full bg-surface-container-high text-tertiary text-[10px] font-semibold">Pending Terms</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Thread 3: Siddharth Nair -->
+              <div class="chat-thread-item p-4 cursor-pointer hover:bg-surface-container-high/40 transition-colors" data-partner="siddharth">
+                <div class="flex items-start gap-3">
+                  <div class="relative shrink-0">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&h=120&q=80" class="w-10 h-10 rounded-full object-cover ring-1 ring-surface-container-highest"/>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between mb-0.5">
+                      <span class="font-bold text-xs text-on-surface truncate">Siddharth Nair</span>
+                      <span class="text-[10px] text-outline">Oct 24</span>
+                    </div>
+                    <span class="text-[11px] text-on-surface-variant block truncate">Founder @ LayerFlow</span>
+                    <p class="text-xs text-outline truncate mt-1">Reviewed your smart contract audit portfolio. Let's sync.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Security Footnote -->
+            <div class="p-3 bg-surface-container-low border-t border-surface-container-high/60 text-[11px] text-on-surface-variant flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[14px] text-secondary">lock</span>
+              <span>Messages are encrypted and never scraped.</span>
+            </div>
+          </aside>
+
+          <!-- Column 2: Active Chat Thread (8 cols) -->
+          <section class="col-span-12 lg:col-span-8 flex flex-col bg-surface-container-lowest">
+            
+            <!-- Thread Top Header -->
+            <div class="p-4 border-b border-surface-container-high/60 flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <img id="chat-partner-avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&q=80" class="w-10 h-10 rounded-full object-cover ring-1 ring-surface-container-highest"/>
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <h3 class="font-bold text-sm text-on-surface" id="chat-partner-name">Elena Vance</h3>
+                    <span class="px-1.5 py-0.2 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold">Identity Checked</span>
+                    <span class="px-1.5 py-0.2 rounded bg-surface-container-high text-primary text-[10px] font-bold">Company Checked</span>
+                  </div>
+                  <span class="text-[11px] text-on-surface-variant" id="chat-partner-sub">Founder @ Kestrel Flow • Requirement: B2B FinTech MVP</span>
+                </div>
+              </div>
+
+              <!-- Quick Action Triggers -->
+              <div class="flex items-center gap-2">
+                <button class="nav-trigger px-3 py-1.5 rounded-lg bg-surface-container text-primary hover:bg-surface-container-high text-xs font-bold flex items-center gap-1 transition-colors" data-view="workspace">
+                  <span class="material-symbols-outlined text-[16px]">contract</span>
+                  <span>View Terms</span>
+                </button>
+                <button id="chat-flag-btn" class="p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/20 transition-colors" title="Report / Flag Message">
+                  <span class="material-symbols-outlined text-[20px]">flag</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Safety Warning Notice Strip -->
+            <div class="bg-surface-container-high px-4 py-2 border-b border-surface-container-highest text-xs text-on-surface-variant flex items-start gap-2">
+              <span class="material-symbols-outlined text-tertiary text-[18px] shrink-0 mt-0.5">warning</span>
+              <p class="text-[11px] leading-tight">
+                <strong>Safety Notice:</strong> Never pay to apply, wire advance fees, or share bank logins. CoBuild is a discovery platform only. Report unsolicited off-platform cryptocurrency payment offers immediately.
+              </p>
+            </div>
+
+            <!-- Messages Stream Area -->
+            <div class="flex-1 overflow-y-auto p-6 space-y-4 bg-surface-container-low/20" id="chat-messages-container">
+              
+              <!-- System Handshake Message -->
+              <div class="flex flex-col items-center justify-center my-2">
+                <div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-container-high/60 shadow-xs max-w-md w-full flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-[18px]">verified</span>
+                  </div>
+                  <div class="flex-1 text-xs">
+                    <span class="font-bold text-primary">Official Collaboration Handshake</span>
+                    <p class="text-on-surface-variant text-[11px]">Alex Rivera applied with scope proposal & portfolio milestones.</p>
+                  </div>
+                </div>
+                <span class="text-[10px] text-outline mt-1">Thursday, 1:45 PM UTC • Session ID #CB-9824</span>
+              </div>
+
+              <!-- Message 1: Elena Vance -->
+              <div class="flex items-start gap-3 max-w-xl">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&q=80" class="w-7 h-7 rounded-full object-cover shrink-0 mt-1"/>
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold text-primary">Elena Vance</span>
+                    <span class="text-[10px] text-outline">2:14 PM</span>
+                  </div>
+                  <div class="bg-surface-container-lowest p-3.5 rounded-2xl rounded-tl-sm shadow-xs border border-surface-container-high/60 text-xs text-on-surface leading-relaxed">
+                    Hi Alex, loved your GitHub repo on distributed rate limiters. Are you open to discussing the architecture this Thursday at 3 PM UTC?
+                  </div>
+                </div>
+              </div>
+
+              <!-- Message 2: Alex Rivera (You) with EXTERNAL LINK WARNING PILL -->
+              <div class="flex items-start justify-end gap-3 max-w-xl ml-auto">
+                <div class="space-y-1 flex flex-col items-end">
+                  <div class="flex items-center gap-2">
+                    <span class="text-[10px] text-outline">2:18 PM</span>
+                    <span class="text-xs font-bold text-on-surface">You</span>
+                  </div>
+                  <div class="bg-primary text-on-primary p-3.5 rounded-2xl rounded-tr-sm shadow-sm text-xs leading-relaxed text-left">
+                    <p>Hi Elena! Yes, that works for me. Here is our architecture draft:</p>
+                    
+                    <!-- External Link Warning Pill with Interactivity -->
+                    <div class="my-2 p-2 bg-surface-container-lowest text-on-surface rounded-xl flex items-center justify-between gap-2 border border-surface-container-high">
+                      <div class="flex items-center gap-1.5 truncate">
+                        <span class="material-symbols-outlined text-[16px] text-tertiary">link_off</span>
+                        <span class="font-mono text-[11px] text-primary underline truncate">external-doc.com/rfc-draft</span>
+                      </div>
+                      <button type="button" class="external-link-btn px-2 py-0.5 rounded bg-tertiary-container/30 text-tertiary text-[10px] font-bold shrink-0 hover:bg-tertiary-container/50 transition-colors" data-url="https://external-doc.com/rfc-draft">
+                        Verify Link
+                      </button>
+                    </div>
+
+                    <p>Looking forward to walking through the sharding mechanisms and caching strategy.</p>
+                  </div>
+                  <span class="text-[10px] text-outline flex items-center gap-0.5">
+                    Read by Elena 2:19 PM <span class="material-symbols-outlined text-[12px] text-primary">done_all</span>
+                  </span>
+                </div>
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" class="w-7 h-7 rounded-full object-cover shrink-0 mt-1"/>
+              </div>
+
+              <!-- Message 3: Elena Vance -->
+              <div class="flex items-start gap-3 max-w-xl">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&q=80" class="w-7 h-7 rounded-full object-cover shrink-0 mt-1"/>
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold text-primary">Elena Vance</span>
+                    <span class="text-[10px] text-outline">2:21 PM</span>
+                  </div>
+                  <div class="bg-surface-container-lowest p-3.5 rounded-2xl rounded-tl-sm shadow-xs border border-surface-container-high/60 text-xs text-on-surface leading-relaxed">
+                    Reviewed the initial diagram. The data isolation boundaries match our compliance targets perfectly. Let's make sure Term #2 and Term #3 are confirmed in our workspace checklist!
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Chat Input Strip -->
+            <div class="p-4 border-t border-surface-container-high/60 bg-surface-container-lowest">
+              <form id="chat-send-form" class="flex items-center gap-2">
+                <button type="button" class="p-2 text-outline hover:text-on-surface rounded-xl hover:bg-surface-container-low transition-colors" title="Attach file or spec">
+                  <span class="material-symbols-outlined text-[20px]">attach_file</span>
+                </button>
+                <input type="text" id="chat-input" placeholder="Type a private message or paste a link..." class="flex-1 px-4 py-2.5 rounded-xl bg-surface-container-low border border-surface-container-high/60 text-xs text-on-surface focus:outline-none focus:border-primary focus:bg-surface-container-lowest transition-all"/>
+                <button type="submit" class="px-5 py-2.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary text-xs font-bold transition-all shadow-xs flex items-center gap-1 active:scale-95">
+                  <span>Send</span>
+                  <span class="material-symbols-outlined text-[16px]">send</span>
+                </button>
+              </form>
+            </div>
+
+          </section>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 5: MY POSTS & APPLICATIONS           -->
+    <!-- ========================================== -->
+    <section id="view-my-posts" class="app-view hidden animate-fade-in">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 space-y-6">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h1 class="font-heading font-extrabold text-2xl text-primary">My Tracked Posts & Applications</h1>
+            <p class="text-xs text-on-surface-variant mt-0.5">Manage your active startup requirements and discover candidate application proposals.</p>
+          </div>
+          <button class="nav-trigger px-4 py-2 rounded-xl bg-primary text-on-primary text-xs font-bold flex items-center gap-1.5 shadow-xs" data-view="create">
+            <span class="material-symbols-outlined text-[18px]">add</span>
+            <span>Post New Requirement</span>
+          </button>
+        </div>
+
+        <!-- My Posts Tabs -->
+        <div class="flex items-center gap-2 border-b border-surface-container-high text-xs">
+          <button id="my-tab-posts" class="my-posts-tab px-4 py-2.5 font-bold border-b-2 border-primary text-primary transition-all active">
+            My Posted Requirements (<span id="my-posts-count">2</span>)
+          </button>
+          <button id="my-tab-apps" class="my-posts-tab px-4 py-2.5 font-medium text-on-surface-variant hover:text-on-surface transition-all">
+            My Applications as Builder (<span id="my-apps-count">1</span>)
+          </button>
+        </div>
+
+        <!-- Tab 1: Posted Requirements -->
+        <div id="my-posts-content" class="space-y-4">
+          <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-surface-container-high/60 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-[10px] font-bold">Active in Market</span>
+                  <span class="text-xs text-on-surface-variant">Posted 3 days ago</span>
+                </div>
+                <h3 class="font-heading font-bold text-base text-primary mt-1">Lead Full-Stack Engineer for Multi-Tenant Collaboration Platform</h3>
+              </div>
+              <div class="flex items-center gap-2">
+                <button class="nav-trigger px-3 py-1.5 rounded-lg bg-surface-container text-primary text-xs font-bold hover:bg-surface-container-high" data-view="workspace">Workspace</button>
+                <button class="nav-trigger px-3 py-1.5 rounded-lg bg-primary text-on-primary text-xs font-bold" data-view="messages">Chat Applicants</button>
+              </div>
+            </div>
+
+            <div class="p-4 bg-surface-container-low rounded-xl border border-surface-container-high/60 space-y-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Incoming Builder Proposals (2)</span>
+              
+              <div class="flex items-center justify-between gap-3 p-3 bg-surface-container-lowest rounded-xl border border-surface-container-high/60">
+                <div class="flex items-center gap-3">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" class="w-9 h-9 rounded-full object-cover"/>
+                  <div>
+                    <span class="font-bold text-xs text-on-surface">Alex Rivera</span>
+                    <span class="text-[11px] text-secondary font-medium ml-1">✓ Portfolio & Identity Checked</span>
+                    <p class="text-xs text-on-surface-variant">Proposed terms: $7,000 direct wire + 1.5% equity. Architecture draft attached.</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container text-[10px] font-bold">Accepted</span>
+                  <button class="nav-trigger px-3 py-1 rounded-lg bg-primary text-on-primary text-xs font-bold" data-view="workspace">Open Collaboration</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 6: TRUST & VERIFICATION DOSSIER      -->
+    <!-- ========================================== -->
+    <section id="view-trust" class="app-view hidden animate-fade-in">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 space-y-8">
+        
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-secondary">Trust Architecture & Platform Guarantees</span>
+          <h1 class="font-heading font-extrabold text-3xl text-primary mt-1">Radical Transparency Policy</h1>
+          <p class="text-sm text-on-surface-variant max-w-3xl mt-2">
+            CoBuild deliberately rejects misleading tech hype. We provide clear, unambiguous boundaries on what our verification badges guarantee—and what they do not.
+          </p>
+        </div>
+
+        <!-- 3 Pillars of Verification Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Pillar 1: Identity Checked -->
+          <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-surface-container-high/60 space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center">
+              <span class="material-symbols-outlined text-[28px]">verified_user</span>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-on-surface">1. Identity Checked</h3>
+            
+            <div class="space-y-3 text-xs leading-relaxed">
+              <div class="p-3 bg-secondary-container/20 rounded-xl">
+                <span class="font-bold text-secondary uppercase tracking-wider text-[10px] block mb-1">What It Means:</span>
+                <p class="text-on-surface">Validated biometric liveness check and official government-issued photo ID matching the legal full name on file.</p>
+              </div>
+              <div class="p-3 bg-surface-container-low rounded-xl">
+                <span class="font-bold text-outline uppercase tracking-wider text-[10px] block mb-1">What It Does NOT Mean:</span>
+                <p class="text-on-surface-variant">Does not imply credit solvency, commercial reliability, or CoBuild warranty on work outputs.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 2: Company Checked -->
+          <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-surface-container-high/60 space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-primary-fixed text-on-primary-fixed flex items-center justify-center">
+              <span class="material-symbols-outlined text-[28px]">domain_verification</span>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-on-surface">2. Company Checked</h3>
+            
+            <div class="space-y-3 text-xs leading-relaxed">
+              <div class="p-3 bg-primary-fixed/40 rounded-xl">
+                <span class="font-bold text-primary uppercase tracking-wider text-[10px] block mb-1">What It Means:</span>
+                <p class="text-on-surface">Active state registrar record (e.g. Delaware C-Corp) and EIN registry verified in good standing.</p>
+              </div>
+              <div class="p-3 bg-surface-container-low rounded-xl">
+                <span class="font-bold text-outline uppercase tracking-wider text-[10px] block mb-1">What It Does NOT Mean:</span>
+                <p class="text-on-surface-variant">Does not mean venture funding guarantees, payroll security, or future capitalization validity.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pillar 3: Portfolio Checked -->
+          <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-surface-container-high/60 space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center">
+              <span class="material-symbols-outlined text-[28px]">folder_shared</span>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-on-surface">3. Portfolio Checked</h3>
+            
+            <div class="space-y-3 text-xs leading-relaxed">
+              <div class="p-3 bg-tertiary-fixed/40 rounded-xl">
+                <span class="font-bold text-tertiary uppercase tracking-wider text-[10px] block mb-1">What It Means:</span>
+                <p class="text-on-surface">Cryptographically verified GitHub commits, live production domain links, or validated prior sprint completion.</p>
+              </div>
+              <div class="p-3 bg-surface-container-low rounded-xl">
+                <span class="font-bold text-outline uppercase tracking-wider text-[10px] block mb-1">What It Does NOT Mean:</span>
+                <p class="text-on-surface-variant">Does not mean code security audit clearance, zero-bug warranty, or platform insurance coverage.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Strict Statutory Platform Disclaimer Banner -->
+        <div class="p-6 rounded-2xl bg-surface-container-high border-2 border-primary/20 space-y-3">
+          <div class="flex items-center gap-2 text-primary font-bold text-sm">
+            <span class="material-symbols-outlined text-[20px]">shield</span>
+            <span>Statutory CoBuild Platform Boundaries</span>
+          </div>
+          <p class="text-xs text-on-surface leading-relaxed">
+            CoBuild operates strictly as a connection and collaboration tracking service. CoBuild is <strong>never</strong> a custodian of funds, escrow holder, securities broker, equity registry, or legal counsel. All compensation arrangements, stock options, and intellectual property assignments must be negotiated and executed by the respective parties via independent counsel.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 7: ADMIN OPERATIONS & TRUST DASHBOARD-->
+    <!-- ========================================== -->
+    <section id="view-admin" class="app-view hidden animate-fade-in">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 space-y-6">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-primary">Operations & Safety Console</span>
+            <h1 class="font-heading font-extrabold text-2xl text-primary mt-1">Platform KPI & Moderation Dashboard</h1>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+            <span class="text-xs font-bold text-secondary">All Safety Systems Normal</span>
+          </div>
+        </div>
+
+        <!-- KPI Bento Grid -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-surface-container-high/60 space-y-1">
+            <span class="text-xs text-on-surface-variant">Connected GMV Volume</span>
+            <div class="font-heading font-extrabold text-2xl text-primary">$1,420,000</div>
+            <span class="text-[11px] text-secondary font-semibold">+18% this month</span>
+          </div>
+          <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-surface-container-high/60 space-y-1">
+            <span class="text-xs text-on-surface-variant">Active Collaborations</span>
+            <div class="font-heading font-extrabold text-2xl text-secondary">142</div>
+            <span class="text-[11px] text-on-surface-variant">Stage Gate Locked</span>
+          </div>
+          <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-surface-container-high/60 space-y-1">
+            <span class="text-xs text-on-surface-variant">Verified Badges Issued</span>
+            <div class="font-heading font-extrabold text-2xl text-primary">894</div>
+            <span class="text-[11px] text-secondary font-semibold">Dual-Verified</span>
+          </div>
+          <div class="bg-surface-container-lowest p-5 rounded-2xl shadow-card border border-surface-container-high/60 space-y-1">
+            <span class="text-xs text-on-surface-variant">Flagged Reports Queue</span>
+            <div class="font-heading font-extrabold text-2xl text-tertiary">0 Pending</div>
+            <span class="text-[11px] text-secondary font-semibold">100% Cleared</span>
+          </div>
+        </div>
+
+        <!-- Moderation Review Queue -->
+        <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-card border border-surface-container-high/60 space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-heading font-bold text-base text-on-surface">Community Safety & Verification Queue</h3>
+            <span class="text-xs text-outline">Auto-sync active</span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-xs text-left">
+              <thead class="text-on-surface-variant uppercase text-[10px] tracking-wider border-b border-surface-container-high bg-surface-container-low/40">
+                <tr>
+                  <th class="py-3 px-4">User</th>
+                  <th class="py-3 px-4">Verification Type</th>
+                  <th class="py-3 px-4">Entity / Document</th>
+                  <th class="py-3 px-4">Status</th>
+                  <th class="py-3 px-4 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-surface-container-high/60" id="admin-table-body">
+                <tr>
+                  <td class="py-3 px-4 font-bold text-on-surface flex items-center gap-2">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=80&h=80&q=80" class="w-7 h-7 rounded-full object-cover"/>
+                    <span>Elena Vance</span>
+                  </td>
+                  <td class="py-3 px-4">Company Registry</td>
+                  <td class="py-3 px-4 font-mono text-[11px]">DE-CORP-984210</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-bold text-[10px]">VERIFIED</span></td>
+                  <td class="py-3 px-4 text-right"><span class="text-outline">Approved</span></td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-on-surface flex items-center gap-2">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80" class="w-7 h-7 rounded-full object-cover"/>
+                    <span>Alex Rivera</span>
+                  </td>
+                  <td class="py-3 px-4">Biometric ID + GitHub</td>
+                  <td class="py-3 px-4 font-mono text-[11px]">US-PASSPORT-***48</td>
+                  <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-bold text-[10px]">VERIFIED</span></td>
+                  <td class="py-3 px-4 text-right"><span class="text-outline">Approved</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- MODALS & OVERLAYS                          -->
+  <!-- ========================================== -->
+  
+  <!-- QUICK APPLY MODAL -->
+  <div id="quick-apply-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-surface-container-lowest rounded-2xl shadow-popover max-w-lg w-full p-6 border border-surface-container-high space-y-4 animate-slide-down">
+      <div class="flex items-center justify-between pb-2 border-b border-surface-container-high">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-secondary text-[22px]">send</span>
+          <h3 class="font-heading font-bold text-base text-on-surface">Submit Collaboration Proposal</h3>
+        </div>
+        <button type="button" class="close-modal-btn p-1 text-outline hover:text-on-surface">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-xs text-on-surface-variant">Applying for requirement:</span>
+        <h4 class="font-heading font-bold text-sm text-primary" id="modal-req-title">Senior Full-Stack Engineer</h4>
+      </div>
+
+      <form id="apply-form" class="space-y-4 text-xs">
+        <div class="space-y-1.5">
+          <label class="font-bold text-on-surface">Personal Pitch & Approach *</label>
+          <textarea id="apply-pitch" rows="3" class="w-full p-3 rounded-xl bg-surface-container-low border border-surface-container-high/60 focus:outline-none focus:border-primary" placeholder="Introduce yourself and summarize your relevant architectural track record..."></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="space-y-1.5">
+            <label class="font-bold text-on-surface">Proposed Cash / Milestone ($)</label>
+            <input type="text" id="apply-cash" value="$6,500 USD / mo" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container-high/60 focus:outline-none"/>
+          </div>
+          <div class="space-y-1.5">
+            <label class="font-bold text-on-surface">Proposed Equity Expectation</label>
+            <input type="text" id="apply-equity" value="1.5% - 2.0%" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container-high/60 focus:outline-none"/>
+          </div>
+        </div>
+
+        <div class="space-y-1.5">
+          <label class="font-bold text-on-surface">Proof of Deliverables / GitHub URL</label>
+          <input type="text" id="apply-link" value="https://github.com/alexrivera/distributed-ratelimiter" class="w-full p-2.5 rounded-xl bg-surface-container-low border border-surface-container-high/60 focus:outline-none"/>
+        </div>
+
+        <div class="p-3 bg-tertiary-container/10 border border-tertiary-container/30 rounded-xl text-[11px] text-tertiary">
+          <strong>Non-Guarantee Notice:</strong> Submitting a proposal initiates an encrypted private conversation. CoBuild never acts as an employer or payroll intermediary.
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button type="button" class="close-modal-btn px-4 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container font-bold">Cancel</button>
+          <button type="submit" class="px-6 py-2 rounded-xl bg-primary text-on-primary font-bold hover:bg-primary-container shadow-xs">
+            Send Proposal Handshake
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- EXTERNAL LINK SAFETY CAUTION MODAL -->
+  <div id="safety-link-modal" class="fixed inset-0 z-50 modal-backdrop hidden flex items-center justify-center p-4">
+    <div class="bg-surface-container-lowest rounded-2xl shadow-popover max-w-md w-full p-6 border border-surface-container-high space-y-4 animate-slide-down">
+      <div class="flex items-center gap-3 text-tertiary">
+        <div class="w-10 h-10 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-[24px]">security_update_warning</span>
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-base text-on-surface">External Link Warning</h3>
+          <span class="text-xs text-outline">Third-Party Domain Detected</span>
+        </div>
+      </div>
+
+      <p class="text-xs text-on-surface leading-relaxed">
+        You are navigating away from CoBuild's secured enclave to: <strong class="text-primary font-mono" id="safety-target-url">external-doc.com/rfc-draft</strong>.
+      </p>
+
+      <div class="p-3 bg-error-container/40 rounded-xl text-[11px] text-on-error-container space-y-1">
+        <span class="font-bold block">Safety Rules:</span>
+        <ul class="list-disc pl-4 space-y-0.5">
+          <li>Never re-enter your CoBuild platform password or private seed keys.</li>
+          <li>Never pay advance fees or deposit cryptocurrency.</li>
+        </ul>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2">
+        <button type="button" class="close-modal-btn px-4 py-2 rounded-xl text-on-surface-variant hover:bg-surface-container font-bold text-xs">Back to Safety</button>
+        <button type="button" id="proceed-external-btn" class="px-5 py-2 rounded-xl bg-primary text-on-primary font-bold text-xs hover:bg-primary-container">
+          Proceed to Link
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>

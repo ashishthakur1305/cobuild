@@ -1,0 +1,71 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: cobuild-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: cobuild
+    command: ["--replSet", "rs0", "--bind_ip_all"]
+    volumes:
+      - mongo_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "try { rs.status().ok } catch (e) { rs.initiate({_id:'rs0',members:[{_id:0,host:'localhost:27017'}]}).ok }"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    container_name: cobuild-mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025" # SMTP
+      - "8025:8025" # Web UI
+    healthcheck:
+      test: ["CMD", "nc", "-z", "localhost", "1025"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  cobuild-api:
+    build:
+      context: ../apps/api
+      dockerfile: Dockerfile
+    container_name: cobuild-api
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb:27017/cobuild?replicaSet=rs0
+      SPRING_MAIL_HOST: mailhog
+      SPRING_MAIL_PORT: 1025
+      JWT_SECRET: ${JWT_SECRET:-cobuild_jwt_super_secure_secret_key_minimum_256_bits_length_123456}
+      APP_CORS_ALLOWED_ORIGINS: http://localhost:3000
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      mailhog:
+        condition: service_started
+
+  cobuild-web:
+    build:
+      context: ../apps/web
+      dockerfile: Dockerfile
+    container_name: cobuild-web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8080/api/v1
+      NEXT_PUBLIC_WS_URL: ws://localhost:8080/ws
+    depends_on:
+      - cobuild-api
+
+volumes:
+  mongo_data:
+    driver: local

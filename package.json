@@ -1,0 +1,21 @@
+{
+  "name": "cobuild-marketplace",
+  "version": "1.0.0",
+  "description": "CoBuild - Global Startup Collaboration Marketplace & Tracked Collaboration Platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "cobuild",
+    "marketplace",
+    "startup-collaboration",
+    "founders",
+    "builders",
+    "equity",
+    "milestones"
+  ],
+  "author": "CoBuild Architecture Team",
+  "license": "MIT"
+}
